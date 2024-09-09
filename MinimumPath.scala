@@ -24,12 +24,11 @@ object MinimumPath {
         .fold(None: Option[Array[Int]]) {
           case (None, rows) => rows.some
           case (Some(p), rows) =>
-
             val newP = new Array[Int](rows.length)
 
             // Process the current row based on the previous row
             for (j <- rows.indices) {
-              val left = if j > 0 then p(j - 1) else Int.MaxValue
+              val left  = if j > 0 then p(j - 1) else Int.MaxValue
               val right = if j < p.length then p(j) else Int.MaxValue
               newP(j) = rows(j) + math.min(left, right)
             }
