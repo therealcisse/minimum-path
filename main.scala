@@ -11,6 +11,6 @@ import cats.effect.unsafe.implicits.global
 
       result <- service.calc(file)
 
-      _ <- IO.println(result.getOrElse("No minimal path found"))
+      _ <- IO.println(result.map(_.sum).getOrElse("No minimal path found"))
     } yield ()
   ).unsafeRunSync()

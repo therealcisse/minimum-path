@@ -30,7 +30,10 @@ class MinimumumPathTest extends munit.CatsEffectSuite {
         .through(Files[IO].writeAll(file))
         .compile
         .drain
-        .assert *> assertIO(service.calc(file.toString), MinimumPath(18, List(7, 6, 3, 2)).some)
+        .assert *> assertIO(
+        service.calc(file.toString),
+        MinimumPath(18, List(7, 6, 3, 2).reverse).some
+      )
     }
   }
 }

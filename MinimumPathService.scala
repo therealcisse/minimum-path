@@ -34,7 +34,7 @@ object MinimumPathService {
 
           val chosen = if left.sum < right.sum then left else right
 
-          newP(j) = MinimumPath(current(j) + chosen.sum, chosen.path :+ current(j))
+          newP(j) = MinimumPath(current(j) + chosen.sum, current(j) :: chosen.path)
         }
 
         newP.some
@@ -53,7 +53,7 @@ object MinimumPathService {
           .head
           .compile
           .lastOrError
-          .map(_.map(_.minBy(_.sum)))
+          .map(_.flatMap(_.minByOption(_.sum)))
 
       def calc(path: String): F[Option[MinimumPath]] = Files[F]
         .readUtf8(Path(path))
@@ -67,7 +67,7 @@ object MinimumPathService {
         .head
         .compile
         .lastOrError
-        .map(_.map(_.minBy(_.sum)))
+        .map(_.flatMap(_.minByOption(_.sum)))
 
     }
 
