@@ -3,13 +3,12 @@ import cats.implicits.*
 import cats.effect.IO
 import cats.effect.unsafe.implicits.global
 
-@main def run(file: String): Unit =
+@main def cmd(): Unit =
   val service = MinimumPathService.live[IO]()
 
   (
     for {
-
-      result <- service.calc(file)
+      result <- service.stdin()
 
       _ <- IO.println(result.getOrElse("No minimal path found"))
     } yield ()

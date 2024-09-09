@@ -16,6 +16,34 @@ scala run . -- data_big.txt
 Or, using scala-cli,
 
 ```scala
-scala run . -- data_big.txt
+scala-cli run . -- data_big.txt
+
+```
+
+## Test
+
+```scala
+scala test .
+
+```
+
+Or, using scala-cli,
+
+```scala
+scala-cli test .
+
+```
+
+
+## Running from the commandline
+
+```scala
+
+cat << EOF |  scala-cli run . --main-class cmd
+7
+6 3
+3 8 5
+11 2 10 9
+EOF
 
 ```
