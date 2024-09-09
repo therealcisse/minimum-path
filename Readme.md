@@ -9,14 +9,14 @@ Install a recent version of [scala](https://www.scala-lang.org) like 3.5 or [sca
 ## Run
 
 ```scala
-scala run . -- data_big.txt
+scala run . --main-class run -- data_big.txt
 
 ```
 
 Or, using scala-cli,
 
 ```scala
-scala-cli run . -- data_big.txt
+scala-cli run . --main-class run -- data_big.txt
 
 ```
 
