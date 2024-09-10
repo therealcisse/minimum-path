@@ -9,7 +9,7 @@ import cats.effect.unsafe.implicits.global
   (
     for {
 
-      result <- service.calc(file)
+      result <- service.fromPath(file)
 
       _ <- IO.println(result.map(_.sum).getOrElse("No minimal path found"))
     } yield ()
